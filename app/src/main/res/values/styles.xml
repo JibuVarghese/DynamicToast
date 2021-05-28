@@ -1,21 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="ToastStyle">
-        <item name="stTextBold">false</item>
-        <item name="stTitleTextBold">true</item>
-        <item name="stTextColor">@android:color/white</item>
-        <item name="stTitleTextColor">#F96161</item>
-        <item name="stLineViewColor">#F96161</item>
+        <item name="dtTextBold">false</item>
+        <item name="dtTitleTextBold">true</item>
+        <item name="dtTextColor">@android:color/white</item>
+        <item name="dtTitleTextColor">#F96161</item>
+        <item name="dtLineViewColor">#F96161</item>
         <!--<item name="font">@font/retrofont</item>-->
-        <item name="stTextSize">14sp</item>
-        <item name="stColorBackground">#1F2F3D</item>
-        <item name="stSolidBackground">true</item>
+        <item name="dtTextSize">14sp</item>
+        <item name="dtColorBackground">#1F2F3D</item>
+        <item name="dtSolidBackground">true</item>
         <!--<item name="strokeWidth">0dp</item>-->
         <!--<item name="strokeColor">#fff</item>-->
         <!--<item name="iconStart">@drawable/ic</item>-->
         <!--<item name="iconEnd">@drawable/ic</item>-->
-        <item name="stLength">SHORT</item>
-        <item name="stGravity">top</item>
-        <item name="stRadius">6dp</item>
+        <item name="dtLength">SHORT</item>
+        <item name="dtGravity">top</item>
+        <item name="dtRadius">6dp</item>
     </style>
 </resources>

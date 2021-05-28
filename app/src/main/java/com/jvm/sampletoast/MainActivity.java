@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import com.jvm.dynamictoast.StyleableToast;
+import com.jvm.dynamictoast.DynamicToast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StyleableToast.makeText(MainActivity.this,"Error","Please select a rating to continue.",
+                DynamicToast.makeText(MainActivity.this,"Error","Please select a rating to continue.",
                         R.style.ToastStyle).show();
             }
         });

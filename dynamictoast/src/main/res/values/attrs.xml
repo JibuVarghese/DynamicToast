@@ -2,27 +2,27 @@
 <resources>
 
     <declare-styleable name="StyleableToast">
-        <attr name="stTextBold" format="boolean" />
-        <attr name="stTextColor" format="color" />
-        <attr name="stFont" format="reference" />
-        <attr name="stTextSize" format="dimension" />
-        <attr name="stTitleTextBold" format="boolean" />
-        <attr name="stTitleTextColor" format="color" />
-        <attr name="stLineViewColor" format="color" />
-        <attr name="stTitleFont" format="reference" />
-        <attr name="stTitleTextSize" format="dimension" />
-        <attr name="stColorBackground" format="color" />
-        <attr name="stSolidBackground" format="boolean" />
-        <attr name="stRadius" format="dimension" />
-        <attr name="stStrokeWidth" format="dimension" />
-        <attr name="stStrokeColor" format="color" />
-        <attr name="stIconStart" format="reference" />
-        <!--<attr name="stIconEnd" format="reference" />-->
-        <attr name="stLength" format="integer">
+        <attr name="dtTextBold" format="boolean" />
+        <attr name="dtTextColor" format="color" />
+        <attr name="dtFont" format="reference" />
+        <attr name="dtTextSize" format="dimension" />
+        <attr name="dtTitleTextBold" format="boolean" />
+        <attr name="dtTitleTextColor" format="color" />
+        <attr name="dtLineViewColor" format="color" />
+        <attr name="dtTitleFont" format="reference" />
+        <attr name="dtTitleTextSize" format="dimension" />
+        <attr name="dtColorBackground" format="color" />
+        <attr name="dtSolidBackground" format="boolean" />
+        <attr name="dtRadius" format="dimension" />
+        <attr name="dtStrokeWidth" format="dimension" />
+        <attr name="dtStrokeColor" format="color" />
+        <attr name="dtIconStart" format="reference" />
+        <!--<attr name="dtIconEnd" format="reference" />-->
+        <attr name="dtLength" format="integer">
             <enum name="LONG" value="1" />
             <enum name="SHORT" value="0" />
         </attr>
-        <attr name="stGravity" format="integer">
+        <attr name="dtGravity" format="integer">
             <enum name="center" value="1" />
             <enum name="top" value="2" />
         </attr>

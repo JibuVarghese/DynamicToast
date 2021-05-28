@@ -7,13 +7,10 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +22,6 @@ import androidx.annotation.StyleRes;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.core.widget.TextViewCompat;
 
 //        Copyright 2017 Muddi Walid
 //
@@ -42,7 +38,7 @@ import androidx.core.widget.TextViewCompat;
 //        limitations under the License.
 
 @SuppressLint("ViewConstructor")
-public class StyleableToast extends CardView {
+public class DynamicToast extends CardView {
 
     private int cornerRadius;
     private int backgroundColor;
@@ -73,15 +69,15 @@ public class StyleableToast extends CardView {
     private ImageView imageViewIcon;
     private View lineView;
 
-    public static StyleableToast makeText(@NonNull Context context, String titleText, String errorText, int length, @StyleRes int style) {
-        return new StyleableToast(context, titleText, errorText, length, style);
+    public static DynamicToast makeText(@NonNull Context context, String titleText, String errorText, int length, @StyleRes int style) {
+        return new DynamicToast(context, titleText, errorText, length, style);
     }
 
-    public static StyleableToast makeText(@NonNull Context context, String titleText, String errorText, @StyleRes int style) {
-        return new StyleableToast(context, titleText, errorText, Toast.LENGTH_SHORT, style);
+    public static DynamicToast makeText(@NonNull Context context, String titleText, String errorText, @StyleRes int style) {
+        return new DynamicToast(context, titleText, errorText, Toast.LENGTH_SHORT, style);
     }
 
-    private StyleableToast(@NonNull Context context, String titleText, String errorText, int length, @StyleRes int style) {
+    private DynamicToast(@NonNull Context context, String titleText, String errorText, int length, @StyleRes int style) {
         super(context);
         this.text = errorText;
         this.titleText = titleText;
@@ -89,7 +85,7 @@ public class StyleableToast extends CardView {
         this.style = style;
     }
 
-    private StyleableToast(Builder builder) {
+    private DynamicToast(Builder builder) {
         super(builder.context);
         this.backgroundColor = builder.backgroundColor;
         this.cornerRadius = builder.cornerRadius;
@@ -292,12 +288,12 @@ public class StyleableToast extends CardView {
         int defaultLineViewColor = ContextCompat.getColor(getContext(), R.color.default_stroke_view_color);
         int defaultCornerRadius = (int) getResources().getDimension(R.dimen.default_corner_radius);
 
-        solidBackground = typedArray.getBoolean(R.styleable.StyleableToast_stSolidBackground, false);
-        backgroundColor = typedArray.getColor(R.styleable.StyleableToast_stColorBackground, defaultBackgroundColor);
-        cornerRadius = (int) typedArray.getDimension(R.styleable.StyleableToast_stRadius, defaultCornerRadius);
-        length = typedArray.getInt(R.styleable.StyleableToast_stLength, 0);
-        gravity = typedArray.getInt(R.styleable.StyleableToast_stGravity, Gravity.BOTTOM);
-        lineViewColor = typedArray.getColor(R.styleable.StyleableToast_stLineViewColor, defaultLineViewColor);
+        solidBackground = typedArray.getBoolean(R.styleable.StyleableToast_dtSolidBackground, false);
+        backgroundColor = typedArray.getColor(R.styleable.StyleableToast_dtColorBackground, defaultBackgroundColor);
+        cornerRadius = (int) typedArray.getDimension(R.styleable.StyleableToast_dtRadius, defaultCornerRadius);
+        length = typedArray.getInt(R.styleable.StyleableToast_dtLength, 0);
+        gravity = typedArray.getInt(R.styleable.StyleableToast_dtGravity, Gravity.BOTTOM);
+        lineViewColor = typedArray.getColor(R.styleable.StyleableToast_dtLineViewColor, defaultLineViewColor);
 
 
         if (gravity == 1) {
@@ -306,9 +302,9 @@ public class StyleableToast extends CardView {
             gravity = Gravity.TOP;
         }
 
-        if (typedArray.hasValue(R.styleable.StyleableToast_stStrokeColor) && typedArray.hasValue(R.styleable.StyleableToast_stStrokeWidth)) {
-            strokeWidth = (int) typedArray.getDimension(R.styleable.StyleableToast_stStrokeWidth, 0);
-            strokeColor = typedArray.getColor(R.styleable.StyleableToast_stStrokeColor, Color.TRANSPARENT);
+        if (typedArray.hasValue(R.styleable.StyleableToast_dtStrokeColor) && typedArray.hasValue(R.styleable.StyleableToast_dtStrokeWidth)) {
+            strokeWidth = (int) typedArray.getDimension(R.styleable.StyleableToast_dtStrokeWidth, 0);
+            strokeColor = typedArray.getColor(R.styleable.StyleableToast_dtStrokeColor, Color.TRANSPARENT);
         }
     }
 
@@ -317,10 +313,10 @@ public class StyleableToast extends CardView {
             return;
         }
 
-        titleTextColor = typedArray.getColor(R.styleable.StyleableToast_stTitleTextColor, textViewTitle.getCurrentTextColor());
-        titleTextBold = typedArray.getBoolean(R.styleable.StyleableToast_stTitleTextBold, false);
-        titleTextSize = typedArray.getDimension(R.styleable.StyleableToast_stTitleTextSize, 0);
-        titleFont = typedArray.getResourceId(R.styleable.StyleableToast_stTitleFont, 0);
+        titleTextColor = typedArray.getColor(R.styleable.StyleableToast_dtTitleTextColor, textViewTitle.getCurrentTextColor());
+        titleTextBold = typedArray.getBoolean(R.styleable.StyleableToast_dtTitleTextBold, false);
+        titleTextSize = typedArray.getDimension(R.styleable.StyleableToast_dtTitleTextSize, 0);
+        titleFont = typedArray.getResourceId(R.styleable.StyleableToast_dtTitleFont, 0);
         isTextSizeFromStyleXml = textSize > 0;
     }
 
@@ -329,10 +325,10 @@ public class StyleableToast extends CardView {
             return;
         }
 
-        textColor = typedArray.getColor(R.styleable.StyleableToast_stTextColor, textViewTitle.getCurrentTextColor());
-        textBold = typedArray.getBoolean(R.styleable.StyleableToast_stTextBold, false);
-        textSize = typedArray.getDimension(R.styleable.StyleableToast_stTextSize, 0);
-        font = typedArray.getResourceId(R.styleable.StyleableToast_stFont, 0);
+        textColor = typedArray.getColor(R.styleable.StyleableToast_dtTextColor, textViewTitle.getCurrentTextColor());
+        textBold = typedArray.getBoolean(R.styleable.StyleableToast_dtTextBold, false);
+        textSize = typedArray.getDimension(R.styleable.StyleableToast_dtTextSize, 0);
+        font = typedArray.getResourceId(R.styleable.StyleableToast_dtFont, 0);
         isTextSizeFromStyleXml = textSize > 0;
     }
 
@@ -341,8 +337,8 @@ public class StyleableToast extends CardView {
         if (style == 0) {
             return;
         }
-        iconStart = typedArray.getResourceId(R.styleable.StyleableToast_stIconStart, 0);
-        //iconEnd = typedArray.getResourceId(R.styleable.StyleableToast_stIconEnd, 0);
+        iconStart = typedArray.getResourceId(R.styleable.StyleableToast_dtIconStart, 0);
+        //iconEnd = typedArray.getResourceId(R.styleable.StyleableToast_dtIconEnd, 0);
     }
 
     public static class Builder {
@@ -360,7 +356,7 @@ public class StyleableToast extends CardView {
         private boolean textBold;
         private String text;
         private int gravity = Gravity.BOTTOM;
-        private StyleableToast toast;
+        private DynamicToast toast;
         private final Context context;
         private int titleTextColor;
         private int lineViewColor;
@@ -492,7 +488,7 @@ public class StyleableToast extends CardView {
         }
 
         public void show() {
-            toast = new StyleableToast(this);
+            toast = new DynamicToast(this);
             toast.show();
         }
 
