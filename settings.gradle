@@ -1,0 +1,3 @@
+rootProject.name = "sampletoast"
+include ':app'
+include ':dynamictoast'
