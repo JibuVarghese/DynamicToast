@@ -114,7 +114,7 @@ public class DynamicToast extends CardView {
     }
 
     private void inflateToastLayout() {
-        View v = inflate(getContext(), R.layout.styleable_layout, null);
+        View v = inflate(getContext(), R.layout.dynamic_styleable_layout, null);
         rootLayout = (CardView) v.getRootView();
         textViewTitle = v.findViewById(R.id.textViewTitle);
         textViewError = v.findViewById(R.id.textViewError);
