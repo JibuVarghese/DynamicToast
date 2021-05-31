@@ -34,7 +34,6 @@
             app:layout_constraintStart_toEndOf="@+id/lineView"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/star_big_on"
-            app:tint="#F96161"
             tools:ignore="ContentDescription" />
 
         <TextView

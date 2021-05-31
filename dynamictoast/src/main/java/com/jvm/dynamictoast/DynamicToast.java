@@ -3,6 +3,7 @@ package com.jvm.dynamictoast;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -23,7 +24,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
-//        Copyright 2017 Muddi Walid
+//        Copyright 2017 Jibu Varghese
 //
 //        Licensed under the Apache License, Version 2.0 (the "License");
 //        you may not use this file except in compliance with the License.
@@ -48,6 +49,7 @@ public class DynamicToast extends CardView {
     //private int iconEnd;
     private int textColor;
     private int titleTextColor;
+    private int iconTintColor;
     private int lineViewColor;
     private int font;
     private int titleFont;
@@ -108,6 +110,7 @@ public class DynamicToast extends CardView {
         this.titleFont = builder.titleFont;
         this.titleText = builder.titleText;
         this.lineViewColor = builder.lineViewColor;
+        this.iconTintColor = builder.iconTintColor;
     }
 
     private void inflateToastLayout() {
@@ -118,7 +121,7 @@ public class DynamicToast extends CardView {
         imageViewIcon = v.findViewById(R.id.imageViewIcon);
         lineView = v.findViewById(R.id.lineView);
         if (style > 0) {
-            typedArray = getContext().obtainStyledAttributes(style, R.styleable.StyleableToast);
+            typedArray = getContext().obtainStyledAttributes(style, R.styleable.DynamicToast);
         }
 
         makeShape();
@@ -232,10 +235,16 @@ public class DynamicToast extends CardView {
         if (iconStart != 0) {
             Drawable drawable = ContextCompat.getDrawable(getContext(), iconStart);
             if (drawable != null) {
+                imageViewIcon.setVisibility(VISIBLE);
                 /*ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(iconSize, iconSize);
                 imageViewIcon.setLayoutParams(layoutParams);*/
                 imageViewIcon.setImageDrawable(drawable);
             }
+        }else {
+            imageViewIcon.setVisibility(GONE);
+        }
+        if (iconTintColor != 0){
+            imageViewIcon.setImageTintList(ColorStateList.valueOf(iconTintColor));
         }
         /*if (iconStart != 0) {
             Drawable drawable = ContextCompat.getDrawable(getContext(), iconStart);
@@ -288,12 +297,12 @@ public class DynamicToast extends CardView {
         int defaultLineViewColor = ContextCompat.getColor(getContext(), R.color.default_stroke_view_color);
         int defaultCornerRadius = (int) getResources().getDimension(R.dimen.default_corner_radius);
 
-        solidBackground = typedArray.getBoolean(R.styleable.StyleableToast_dtSolidBackground, false);
-        backgroundColor = typedArray.getColor(R.styleable.StyleableToast_dtColorBackground, defaultBackgroundColor);
-        cornerRadius = (int) typedArray.getDimension(R.styleable.StyleableToast_dtRadius, defaultCornerRadius);
-        length = typedArray.getInt(R.styleable.StyleableToast_dtLength, 0);
-        gravity = typedArray.getInt(R.styleable.StyleableToast_dtGravity, Gravity.BOTTOM);
-        lineViewColor = typedArray.getColor(R.styleable.StyleableToast_dtLineViewColor, defaultLineViewColor);
+        solidBackground = typedArray.getBoolean(R.styleable.DynamicToast_dtSolidBackground, false);
+        backgroundColor = typedArray.getColor(R.styleable.DynamicToast_dtColorBackground, defaultBackgroundColor);
+        cornerRadius = (int) typedArray.getDimension(R.styleable.DynamicToast_dtRadius, defaultCornerRadius);
+        length = typedArray.getInt(R.styleable.DynamicToast_dtLength, 0);
+        gravity = typedArray.getInt(R.styleable.DynamicToast_dtGravity, Gravity.BOTTOM);
+        lineViewColor = typedArray.getColor(R.styleable.DynamicToast_dtLineViewColor, defaultLineViewColor);
 
 
         if (gravity == 1) {
@@ -302,9 +311,9 @@ public class DynamicToast extends CardView {
             gravity = Gravity.TOP;
         }
 
-        if (typedArray.hasValue(R.styleable.StyleableToast_dtStrokeColor) && typedArray.hasValue(R.styleable.StyleableToast_dtStrokeWidth)) {
-            strokeWidth = (int) typedArray.getDimension(R.styleable.StyleableToast_dtStrokeWidth, 0);
-            strokeColor = typedArray.getColor(R.styleable.StyleableToast_dtStrokeColor, Color.TRANSPARENT);
+        if (typedArray.hasValue(R.styleable.DynamicToast_dtStrokeColor) && typedArray.hasValue(R.styleable.DynamicToast_dtStrokeWidth)) {
+            strokeWidth = (int) typedArray.getDimension(R.styleable.DynamicToast_dtStrokeWidth, 0);
+            strokeColor = typedArray.getColor(R.styleable.DynamicToast_dtStrokeColor, Color.TRANSPARENT);
         }
     }
 
@@ -313,10 +322,10 @@ public class DynamicToast extends CardView {
             return;
         }
 
-        titleTextColor = typedArray.getColor(R.styleable.StyleableToast_dtTitleTextColor, textViewTitle.getCurrentTextColor());
-        titleTextBold = typedArray.getBoolean(R.styleable.StyleableToast_dtTitleTextBold, false);
-        titleTextSize = typedArray.getDimension(R.styleable.StyleableToast_dtTitleTextSize, 0);
-        titleFont = typedArray.getResourceId(R.styleable.StyleableToast_dtTitleFont, 0);
+        titleTextColor = typedArray.getColor(R.styleable.DynamicToast_dtTitleTextColor, textViewTitle.getCurrentTextColor());
+        titleTextBold = typedArray.getBoolean(R.styleable.DynamicToast_dtTitleTextBold, false);
+        titleTextSize = typedArray.getDimension(R.styleable.DynamicToast_dtTitleTextSize, 0);
+        titleFont = typedArray.getResourceId(R.styleable.DynamicToast_dtTitleFont, 0);
         isTextSizeFromStyleXml = textSize > 0;
     }
 
@@ -325,10 +334,10 @@ public class DynamicToast extends CardView {
             return;
         }
 
-        textColor = typedArray.getColor(R.styleable.StyleableToast_dtTextColor, textViewTitle.getCurrentTextColor());
-        textBold = typedArray.getBoolean(R.styleable.StyleableToast_dtTextBold, false);
-        textSize = typedArray.getDimension(R.styleable.StyleableToast_dtTextSize, 0);
-        font = typedArray.getResourceId(R.styleable.StyleableToast_dtFont, 0);
+        textColor = typedArray.getColor(R.styleable.DynamicToast_dtTextColor, textViewTitle.getCurrentTextColor());
+        textBold = typedArray.getBoolean(R.styleable.DynamicToast_dtTextBold, false);
+        textSize = typedArray.getDimension(R.styleable.DynamicToast_dtTextSize, 0);
+        font = typedArray.getResourceId(R.styleable.DynamicToast_dtFont, 0);
         isTextSizeFromStyleXml = textSize > 0;
     }
 
@@ -337,8 +346,9 @@ public class DynamicToast extends CardView {
         if (style == 0) {
             return;
         }
-        iconStart = typedArray.getResourceId(R.styleable.StyleableToast_dtIconStart, 0);
-        //iconEnd = typedArray.getResourceId(R.styleable.StyleableToast_dtIconEnd, 0);
+        iconStart = typedArray.getResourceId(R.styleable.DynamicToast_dtIconStart, 0);
+        iconTintColor = typedArray.getColor(R.styleable.DynamicToast_dtIconTintColor, 0);
+        //iconEnd = typedArray.getResourceId(R.styleable.DynamicToast_dtIconEnd, 0);
     }
 
     public static class Builder {
@@ -360,6 +370,7 @@ public class DynamicToast extends CardView {
         private final Context context;
         private int titleTextColor;
         private int lineViewColor;
+        private int iconTintColor;
         private int titleFont;
         private float titleTextSize;
         private boolean titleTextBold;
@@ -391,6 +402,11 @@ public class DynamicToast extends CardView {
 
         public Builder lineViewColor(@ColorInt int lineViewColor) {
             this.lineViewColor = lineViewColor;
+            return this;
+        }
+
+        public Builder iconTintColor(@ColorInt int iconTintColor) {
+            this.iconTintColor = iconTintColor;
             return this;
         }
 
@@ -433,7 +449,7 @@ public class DynamicToast extends CardView {
         }
 
         /**
-         * This call will make the StyleableToast's background completely solid without any opacity.
+         * This call will make the DynamicToast's background completely solid without any opacity.
          */
         public Builder solidBackground() {
             this.solidBackground = true;
@@ -447,7 +463,7 @@ public class DynamicToast extends CardView {
         }
 
         /**
-         * @param cornerRadius Sets the corner radius of the StyleableToast's shape.
+         * @param cornerRadius Sets the corner radius of the DynamicToast's shape.
          */
         public Builder cornerRadius(int cornerRadius) {
             this.cornerRadius = Utils.toDp(context, cornerRadius);
@@ -465,7 +481,7 @@ public class DynamicToast extends CardView {
         }*/
 
         /**
-         * Sets where the StyleableToast will appear on the screen
+         * Sets where the DynamicToast will appear on the screen
          */
         public Builder gravity(int gravity) {
             this.gravity = gravity;

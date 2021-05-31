@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="ToastStyle">
+    <style name="ErrorToastStyle">
         <item name="dtTextBold">false</item>
         <item name="dtTitleTextBold">true</item>
         <item name="dtTextColor">@android:color/white</item>
@@ -17,6 +17,90 @@
         <item name="dtLength">SHORT</item>
         <item name="dtGravity">top</item>
         <item name="dtRadius">6dp</item>
-        <item name="dtIconStart">@drawable/ic_warning</item>
+        <item name="dtIconStart">@drawable/ic_error</item>
+    </style>
+
+    <style name="SuccessToastStyle">
+        <item name="dtTextBold">false</item>
+        <item name="dtTitleTextBold">true</item>
+        <item name="dtTextColor">@android:color/white</item>
+        <item name="dtTitleTextColor">#4FD688</item>
+        <item name="dtLineViewColor">#4FD688</item>
+        <!--<item name="font">@font/retrofont</item>-->
+        <item name="dtTextSize">14sp</item>
+        <item name="dtColorBackground">#1F2F3D</item>
+        <item name="dtSolidBackground">true</item>
+        <!--<item name="strokeWidth">0dp</item>-->
+        <!--<item name="strokeColor">#fff</item>-->
+        <!--<item name="iconStart">@drawable/ic</item>-->
+        <!--<item name="iconEnd">@drawable/ic</item>-->
+        <item name="dtLength">SHORT</item>
+        <!--<item name="dtGravity">top</item>-->
+        <item name="dtRadius">6dp</item>
+        <item name="dtIconStart">@drawable/ic_success</item>
+    </style>
+
+    <style name="WarningToastStyle">
+        <item name="dtTextBold">false</item>
+        <item name="dtTitleTextBold">true</item>
+        <item name="dtTextColor">@android:color/white</item>
+        <item name="dtTitleTextColor">#FFC820</item>
+        <item name="dtLineViewColor">#FFC820</item>
+        <!--<item name="font">@font/retrofont</item>-->
+        <item name="dtTextSize">14sp</item>
+        <item name="dtColorBackground">#1F2F3D</item>
+        <item name="dtSolidBackground">true</item>
+        <!--<item name="strokeWidth">0dp</item>-->
+        <!--<item name="strokeColor">#fff</item>-->
+        <!--<item name="iconStart">@drawable/ic</item>-->
+        <!--<item name="iconEnd">@drawable/ic</item>-->
+        <item name="dtLength">SHORT</item>
+        <item name="dtGravity">center</item>
+        <item name="dtRadius">6dp</item>
+        <item name="dtIconStart">@drawable/ic_error</item>
+        <item name="dtIconTintColor">#FFC820</item>
+    </style>
+
+    <style name="InfoToastStyle">
+        <item name="dtTextBold">false</item>
+        <item name="dtTitleTextBold">true</item>
+        <item name="dtTextColor">@android:color/white</item>
+        <item name="dtTitleTextColor">#2DA7F5</item>
+        <item name="dtLineViewColor">#2DA7F5</item>
+        <!--<item name="font">@font/retrofont</item>-->
+        <item name="dtTextSize">14sp</item>
+        <item name="dtColorBackground">#1F2F3D</item>
+        <item name="dtSolidBackground">true</item>
+        <!--<item name="strokeWidth">0dp</item>-->
+        <!--<item name="strokeColor">#fff</item>-->
+        <!--<item name="iconStart">@drawable/ic</item>-->
+        <!--<item name="iconEnd">@drawable/ic</item>-->
+        <item name="dtLength">SHORT</item>
+        <item name="dtGravity">top</item>
+        <item name="dtRadius">6dp</item>
+        <item name="dtIconStart">@drawable/ic_error</item>
+        <item name="dtIconTintColor">#2DA7F5</item>
+    </style>
+
+    <style name="DefaultStyle">
+        <item name="dtTextBold">false</item>
+        <item name="dtTitleTextBold">true</item>
+        <item name="dtTextColor">@android:color/white</item>
+        <item name="dtTitleTextColor">#FFFFFF</item>
+        <item name="dtLineViewColor">#428BCC</item>
+        <!--<item name="font">@font/retrofont</item>-->
+        <item name="dtTextSize">14sp</item>
+        <item name="dtColorBackground">#1F2F3D</item>
+        <item name="dtSolidBackground">true</item>
+        <!--<item name="strokeWidth">0dp</item>-->
+        <!--<item name="strokeColor">#fff</item>-->
+        <!--<item name="iconStart">@drawable/ic</item>-->
+        <!--<item name="iconEnd">@drawable/ic</item>-->
+        <item name="dtLength">SHORT</item>
+        <!--<item name="dtGravity">top</item>-->
+        <item name="dtRadius">6dp</item>
+        <!--dont add any icon items to hide the icon-->
+        <!--<item name="dtIconStart">@drawable/ic_info</item>
+        <item name="dtIconTintColor">#D8C7C7</item>-->
     </style>
 </resources>

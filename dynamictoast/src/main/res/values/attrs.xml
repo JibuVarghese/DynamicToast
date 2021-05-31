@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="StyleableToast">
+    <declare-styleable name="DynamicToast">
         <attr name="dtTextBold" format="boolean" />
         <attr name="dtTextColor" format="color" />
         <attr name="dtFont" format="reference" />
@@ -16,6 +16,7 @@
         <attr name="dtRadius" format="dimension" />
         <attr name="dtStrokeWidth" format="dimension" />
         <attr name="dtStrokeColor" format="color" />
+        <attr name="dtIconTintColor" format="color" />
         <attr name="dtIconStart" format="reference" />
         <!--<attr name="dtIconEnd" format="reference" />-->
         <attr name="dtLength" format="integer">
