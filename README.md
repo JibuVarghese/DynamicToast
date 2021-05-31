@@ -1,7 +1,7 @@
 # DynamicToast
 You can customize the style of your toast using DynamicToast library.
 Screenshots
-![Screenshot 1](../main/images/1.png)
+![Screenshot 1](../main/images/1.jpg)
 <img src="main/images/1.png" alt=""/>
 <img src="/images/2.png" alt=""/>
 <img src="/images/3.png" alt=""/>
