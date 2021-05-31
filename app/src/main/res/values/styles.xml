@@ -17,5 +17,6 @@
         <item name="dtLength">SHORT</item>
         <item name="dtGravity">top</item>
         <item name="dtRadius">6dp</item>
+        <item name="dtIconStart">@drawable/ic_warning</item>
     </style>
 </resources>
