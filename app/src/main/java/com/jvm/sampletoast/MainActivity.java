@@ -39,5 +39,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showToast(@StyleRes int style){
         DynamicToast.makeText(MainActivity.this,"Error","Please select a rating to continue.",
                 style).show();
+        /*DynamicToast.Builder dynamicToast = new DynamicToast.Builder(MainActivity.this)
+                .text("test toast")
+                .build();
+        dynamicToast.show();
+
+        DynamicToast.Builder dynamicToast1 = new DynamicToast.Builder(MainActivity.this)
+                .titleText("Error")
+                .text("Please select a rating to continue.")
+                .build();
+
+        dynamicToast1.show();*/
     }
 }

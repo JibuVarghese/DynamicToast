@@ -8,6 +8,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -194,6 +195,16 @@ public class DynamicToast extends CardView {
     private void makeTitleTextView() {
         loadTitleTextViewAttributes();
         textViewTitle.setText(titleText);
+        int paddingTop = (int) getResources().getDimension(R.dimen.toast_vertical_top_padding);
+        int paddingEnd = (int) getResources().getDimension(R.dimen.toast_horizontal_padding);
+        int paddingBottom = (int) getResources().getDimension(R.dimen.toast_vertical_padding);
+        if (TextUtils.isEmpty(titleText)) {
+            textViewTitle.setVisibility(GONE);
+            textViewError.setPadding(0, paddingTop, paddingEnd, paddingBottom);
+        } else {
+            textViewTitle.setVisibility(VISIBLE);
+            textViewError.setPadding(0, 0, paddingEnd, paddingBottom);
+        }
         if (titleTextColor != 0) {
             textViewTitle.setTextColor(titleTextColor);
         }
@@ -240,10 +251,10 @@ public class DynamicToast extends CardView {
                 imageViewIcon.setLayoutParams(layoutParams);*/
                 imageViewIcon.setImageDrawable(drawable);
             }
-        }else {
+        } else {
             imageViewIcon.setVisibility(GONE);
         }
-        if (iconTintColor != 0){
+        if (iconTintColor != 0) {
             imageViewIcon.setImageTintList(ColorStateList.valueOf(iconTintColor));
         }
         /*if (iconStart != 0) {
