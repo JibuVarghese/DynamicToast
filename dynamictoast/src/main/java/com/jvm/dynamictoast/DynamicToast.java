@@ -67,7 +67,7 @@ public class DynamicToast extends CardView {
     private String text;
     private String titleText;
     private TypedArray typedArray;
-    private TextView textViewTitle, textViewError;
+    private TextView textViewTitle, textViewToastMsg;
     private int gravity;
     private Toast toast;
     private CardView rootLayout;
@@ -120,7 +120,7 @@ public class DynamicToast extends CardView {
         View v = inflate(getContext(), R.layout.dynamic_styleable_layout, null);
         rootLayout = (CardView) v.getRootView();
         textViewTitle = v.findViewById(R.id.textViewTitle);
-        textViewError = v.findViewById(R.id.textViewError);
+        textViewToastMsg = v.findViewById(R.id.textViewToastMsg);
         imageViewIcon = v.findViewById(R.id.imageViewIcon);
         lineView = v.findViewById(R.id.lineView);
         if (style > 0) {
@@ -203,10 +203,10 @@ public class DynamicToast extends CardView {
         int paddingBottom = (int) getResources().getDimension(R.dimen.toast_vertical_padding);
         if (TextUtils.isEmpty(titleText)) {
             textViewTitle.setVisibility(GONE);
-            textViewError.setPadding(0, paddingTop, paddingEnd, paddingBottom);
+            textViewToastMsg.setPadding(0, paddingTop, paddingEnd, paddingBottom);
         } else {
             textViewTitle.setVisibility(VISIBLE);
-            textViewError.setPadding(0, 0, paddingEnd, paddingBottom);
+            textViewToastMsg.setPadding(0, 0, paddingEnd, paddingBottom);
         }
         if (titleTextColor != 0) {
             textViewTitle.setTextColor(titleTextColor);
@@ -224,18 +224,18 @@ public class DynamicToast extends CardView {
 
     private void makeErrorTextView() {
         loadErrorTextViewAttributes();
-        textViewError.setText(text);
+        textViewToastMsg.setText(text);
         if (textColor != 0) {
-            textViewError.setTextColor(textColor);
+            textViewToastMsg.setTextColor(textColor);
         }
         if (textSize > 0) {
-            textViewError.setTextSize(isTextSizeFromStyleXml ? 0 : TypedValue.COMPLEX_UNIT_SP, textSize);
+            textViewToastMsg.setTextSize(isTextSizeFromStyleXml ? 0 : TypedValue.COMPLEX_UNIT_SP, textSize);
         }
         if (font > 0) {
-            textViewError.setTypeface(ResourcesCompat.getFont(getContext(), font), textBold ? Typeface.BOLD : Typeface.NORMAL);
+            textViewToastMsg.setTypeface(ResourcesCompat.getFont(getContext(), font), textBold ? Typeface.BOLD : Typeface.NORMAL);
         }
         if (textBold && font == 0) {
-            textViewError.setTypeface(textViewError.getTypeface(), Typeface.BOLD);
+            textViewToastMsg.setTypeface(textViewToastMsg.getTypeface(), Typeface.BOLD);
         }
     }
 
@@ -304,11 +304,11 @@ public class DynamicToast extends CardView {
             lineView.setVisibility(GONE);
             imageViewIcon.setVisibility(GONE);
             textViewTitle.setVisibility(GONE);
-            textViewError.setVisibility(VISIBLE);
+            textViewToastMsg.setVisibility(VISIBLE);
             int paddingVertical = (int) getResources().getDimension(R.dimen.toast_vertical_padding);
             int paddingHorizontal = (int) getResources().getDimension(R.dimen.toast_horizontal_padding);
-            ((MarginLayoutParams) textViewError.getLayoutParams()).setMarginStart(0);
-            textViewError.setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVertical);
+            ((MarginLayoutParams) textViewToastMsg.getLayoutParams()).setMarginStart(0);
+            textViewToastMsg.setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVertical);
         }
     }
 

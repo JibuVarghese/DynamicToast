@@ -16,7 +16,7 @@
             android:id="@+id/lineView"
             android:layout_width="6dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/textViewError"
+            android:layout_alignBottom="@id/textViewToastMsg"
             android:layout_alignParentStart="true"
             android:background="@color/default_stroke_view_color" />
 
@@ -45,7 +45,7 @@
             tools:ignore="HardcodedText,RtlSymmetry" />
 
         <TextView
-            android:id="@+id/textViewError"
+            android:id="@+id/textViewToastMsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewTitle"
