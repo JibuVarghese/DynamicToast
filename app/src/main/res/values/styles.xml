@@ -99,6 +99,7 @@
         <item name="dtLength">SHORT</item>
         <!--<item name="dtGravity">top</item>-->
         <item name="dtRadius">6dp</item>
+        <item name="dtIsDefaultToast">true</item>
         <!--dont add any icon items to hide the icon-->
         <!--<item name="dtIconStart">@drawable/ic_info</item>
         <item name="dtIconTintColor">#D8C7C7</item>-->

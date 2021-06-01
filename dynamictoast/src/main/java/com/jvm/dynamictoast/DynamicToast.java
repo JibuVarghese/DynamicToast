@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,6 +60,7 @@ public class DynamicToast extends CardView {
     private float textSize;
     private float titleTextSize;
     private boolean isTextSizeFromStyleXml = false;
+    private boolean isTitleTextSizeFromStyleXml = false;
     private boolean solidBackground;
     private boolean textBold;
     private boolean titleTextBold;
@@ -129,6 +131,7 @@ public class DynamicToast extends CardView {
         makeErrorTextView();
         makeTitleTextView();
         makeIcon();
+        checkForDefaultToastKey();
 
         // Very important to recycle AFTER the make() methods!
         if (typedArray != null) {
@@ -209,7 +212,7 @@ public class DynamicToast extends CardView {
             textViewTitle.setTextColor(titleTextColor);
         }
         if (titleTextSize > 0) {
-            textViewTitle.setTextSize(isTextSizeFromStyleXml ? 0 : TypedValue.COMPLEX_UNIT_SP, titleTextSize);
+            textViewTitle.setTextSize(isTitleTextSizeFromStyleXml ? 0 : TypedValue.COMPLEX_UNIT_SP, titleTextSize);
         }
         if (titleFont > 0) {
             textViewTitle.setTypeface(ResourcesCompat.getFont(getContext(), titleFont), titleTextBold ? Typeface.BOLD : Typeface.NORMAL);
@@ -295,6 +298,20 @@ public class DynamicToast extends CardView {
         }*/
     }
 
+    private void checkForDefaultToastKey() {
+        boolean isDefaultToast = typedArray.getBoolean(R.styleable.DynamicToast_dtIsDefaultToast, false);
+        if (isDefaultToast) {
+            lineView.setVisibility(GONE);
+            imageViewIcon.setVisibility(GONE);
+            textViewTitle.setVisibility(GONE);
+            textViewError.setVisibility(VISIBLE);
+            int paddingVertical = (int) getResources().getDimension(R.dimen.toast_vertical_padding);
+            int paddingHorizontal = (int) getResources().getDimension(R.dimen.toast_horizontal_padding);
+            ((MarginLayoutParams) textViewError.getLayoutParams()).setMarginStart(0);
+            textViewError.setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVertical);
+        }
+    }
+
     /**
      * loads style attributes from styles.xml if a style resource is used.
      */
@@ -337,7 +354,7 @@ public class DynamicToast extends CardView {
         titleTextBold = typedArray.getBoolean(R.styleable.DynamicToast_dtTitleTextBold, false);
         titleTextSize = typedArray.getDimension(R.styleable.DynamicToast_dtTitleTextSize, 0);
         titleFont = typedArray.getResourceId(R.styleable.DynamicToast_dtTitleFont, 0);
-        isTextSizeFromStyleXml = textSize > 0;
+        isTitleTextSizeFromStyleXml = titleTextSize > 0;
     }
 
     private void loadErrorTextViewAttributes() {

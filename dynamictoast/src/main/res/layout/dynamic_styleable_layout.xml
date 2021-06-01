@@ -18,10 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/textViewError"
             android:layout_alignParentStart="true"
-            android:background="@color/default_stroke_view_color"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="@color/default_stroke_view_color" />
 
         <ImageView
             android:id="@+id/imageViewIcon"
@@ -30,9 +27,6 @@
             android:layout_centerInParent="true"
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@id/lineView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/lineView"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/star_big_on"
             tools:ignore="ContentDescription" />
 
@@ -48,9 +42,6 @@
             android:text="Error"
             android:textColor="@color/default_text_color"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewIcon"
-            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText,RtlSymmetry" />
 
         <TextView
@@ -59,16 +50,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewTitle"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/imageViewIcon"
+            android:paddingTop="@dimen/toast_vertical_top_error_text"
             android:paddingEnd="@dimen/toast_horizontal_padding"
             android:paddingBottom="@dimen/toast_vertical_padding"
-            android:text="Please select a rating to continue. "
+            android:text="Please select a rating to continue."
             android:textColor="@color/default_text_color"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewIcon"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
             tools:ignore="HardcodedText,RtlSymmetry" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

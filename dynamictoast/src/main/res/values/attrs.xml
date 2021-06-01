@@ -2,6 +2,8 @@
 <resources>
 
     <declare-styleable name="DynamicToast">
+
+        <attr name="dtIsDefaultToast" format="boolean" />
         <attr name="dtTextBold" format="boolean" />
         <attr name="dtTextColor" format="color" />
         <attr name="dtFont" format="reference" />
