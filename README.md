@@ -16,7 +16,7 @@ Step 2:
 
 Include below dependency to your app build.gradle
 
-implementation 'com.github.JibuVarghese:DynamicToast:1.0.3'
+implementation 'com.github.JibuVarghese:DynamicToast:tag'
 
 build your project and use DynamicToast
 
