@@ -1,4 +1,7 @@
 # DynamicToast
+[![Release](https://jitpack.io/v/JibuVarghese/DynamicToast.svg)]
+(https://jitpack.io/#JibuVarghese/DynamicToast)
+
 
 You can customize the style of your toast using DynamicToast library.
 
